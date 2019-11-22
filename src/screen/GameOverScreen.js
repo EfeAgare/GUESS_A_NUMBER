@@ -7,7 +7,10 @@ const GameOverScreen = (props) => {
   return (
     <View style={styles.screen}>
       <Text>The Game is Over!</Text>
-      <Image source={require('../../assets/success.png')} style={styles.image}/>
+      <Image 
+      source={require('../../assets/success.png')} 
+      source={{uri: ""}}  // from the web
+      style={styles.image}/>
   <Text>Number of rounds: {roundsNumber}</Text>
   <Text>Number was: {userNumber}</Text>
   <Button title="Restart Game" onPress={onRestart}/>
