@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import * as Font from 'expo-font'
-import {AppLoading} from 'expo'
+import { AppLoading } from 'expo'
 
 
 import Header from './src/component/Header';
@@ -18,14 +18,21 @@ const fetchFonts = () => {
     "open-sans-bold": require('./assets/fonts/OpenSans-Bold.ttf')
   })
 }
+
 export default function App() {
 
   const [userNumber, setUserNumber] = useState()
   const [guessRounds, setGuessRounds] = useState(0)
-  const [dataLoading, setDataLoading] = useState(false)
+  const [dataLoaded, setDataLoaded] = useState(false)
 
-  if (!dataLoading) {
-    return <AppLoading startAsync={fetchFonts} onFinish={() => setDataLoading(true)} onError={(err) => console.log(err)}/>
+  if (!dataLoaded) {
+    return (
+      <AppLoading
+        startAsync={fetchFonts}
+        onFinish={() => setDataLoaded(true)}
+        onError={err => console.log(err)}
+      />
+    );
   }
   const configureNewGameHandler = () => {
     setGuessRounds(0)

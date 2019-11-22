@@ -9,7 +9,11 @@ const GameOverScreen = (props) => {
       <Text>The Game is Over!</Text>
       <Image 
       source={require('../../assets/success.png')} 
-      source={{uri: ""}}  // from the web
+      // source={{
+          //   uri:
+          //     'https://cdn.pixabay.com/photo/2016/05/05/23/52/mountain-summit-1375015_960_720.jpg'
+          // }}
+        // from the web
       style={styles.image}/>
   <Text>Number of rounds: {roundsNumber}</Text>
   <Text>Number was: {userNumber}</Text>
