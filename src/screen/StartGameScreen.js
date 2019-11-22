@@ -9,8 +9,10 @@ import {
   Alert // API not a component
 } from 'react-native';
 import Card from '../component/Card';
-import Colors from '../../constants/colors';
+import Colors from '../constants/colors';
 import Input from '../component/Input';
+import NumberContainer from '../component/NumberContainer';
+
 const StartGameScreen = props => {
   const [enteredValue, setEnteredvalue] = useState('');
   const [confirmed, setConfirmed] = useState(false);
@@ -36,11 +38,18 @@ const StartGameScreen = props => {
     setEnteredvalue('');
     setSelectedNumber(chosenNumber);
     setConfirmed(true);
+    Keyboard.dismiss();
   };
 
   let confirmedOutput;
   if (confirmed) {
-    confirmedOutput = <Text>Chosen Number: {selectedNumber}</Text>;
+    confirmedOutput = (
+      <Card style={styles.summaryContainer}>
+        <Text>You selected</Text>
+        <NumberContainer>{selectedNumber}</NumberContainer>
+        <Button title="START GAME" />
+      </Card>
+    );
   }
 
   return (
@@ -113,6 +122,10 @@ const styles = StyleSheet.create({
   input: {
     width: 100,
     textAlign: 'center'
+  },
+  summaryContainer: {
+    marginTop: 20,
+    alignItems: 'center'
   }
 });
 
